@@ -1,19 +1,31 @@
 import Image from "next/image";
-import { GameItemProps } from "./";
+import type { GameItemData } from "@/interfaces/Games.interface";
+import { convertIgdbImageUrl } from "@/lib";
 
-export const GameItem: React.FC<GameItemProps> = ({ title, image }) => {
+export const GameItem: React.FC<GameItemData> = ({ name, cover }) => {
+  const placeholderUrl = "/media/gameCoverPlaceholder.jpg";
+
+  const getUrl = cover?.url;
+
+  const url = getUrl ? convertIgdbImageUrl(getUrl) : placeholderUrl;
+
+  // console.log("name: ", name, "url: ", url);
   return (
-    <div className="flex flex-col items-start bg-gray-dark-XX rounded-2xl overflow-hidden cursor-pointer hover:opacity-90">
-      <div className="w-full aspect-square bg-gray overflow-visible">
-        <Image
-          src={image}
-          className="w-full h-full object-cover"
-          alt="Uncharted 3"
-          width={300}
-          height={300}
-        />
+    getUrl && (
+      <div className="flex flex-col items-start bg-gray-dark-XX rounded-2xl overflow-hidden cursor-pointer transition-transform hover:scale-103 hover:shadow-xl ">
+        <div className="flex items-center justify-center w-full aspect-3/4 bg-gray overflow-hidden">
+          <Image
+            src={url}
+            className="w-full h-full object-cover"
+            alt={name}
+            width={300}
+            height={300}
+          />
+        </div>
+        <div className="w-full p-4 font-semibold text-md md:text-lg">
+          {name}
+        </div>
       </div>
-      <div className="w-full p-4 font-semibold text-lg">{title}</div>
-    </div>
+    )
   );
 };

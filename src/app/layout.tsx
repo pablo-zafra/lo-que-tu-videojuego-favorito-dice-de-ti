@@ -59,7 +59,7 @@ export default function RootLayout({
       >
         <div className="flex flex-col items-center justify-center w-full min-h-screen py-5">
           <div className="flex flex-col items-center justify-center w-full max-w-5xl gap-21">
-            <main className="flex flex-col w-full py-32 gap-16">
+            <main className="flex flex-col w-full py-32 px-11 gap-16">
               {children}
             </main>
             <Footer />

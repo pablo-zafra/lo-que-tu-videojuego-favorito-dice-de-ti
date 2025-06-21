@@ -1,29 +1,36 @@
+import { Suspense } from "react";
 import { GameGrid, Form } from "@/components";
-import imgGame from "../../../public/media/uncharted.jpg";
+import { GameItemData } from "@/interfaces/Games.interface";
+import { searchGames } from "@/lib";
 
-export default function SearchPage() {
-  const games = [
-    {
-      title: "Uncharted",
-      image: imgGame.src,
-    },
-    {
-      title: "The Witcher 3",
-      image: imgGame.src,
-    },
-    {
-      title: "The Last of Us",
-      image: imgGame.src,
-    },
-    {
-      title: "The Legend of Zelda: Breath of the Wild",
-      image: imgGame.src,
-    },
-    {
-      title: "The Elder Scrolls V: Skyrim",
-      image: imgGame.src,
-    },
-  ];
+export default async function SearchPage({
+  searchParams,
+}: {
+  searchParams: { q?: string };
+}) {
+  const params = await searchParams;
+  const query = params.q;
+  let games: GameItemData[] = [];
+  let error: string | null = null;
+
+  if (query) {
+    try {
+      games = await searchGames(query);
+    } catch (e) {
+      console.error("Error al buscar juegos en la página /search:", e);
+      error =
+        "Hubo un problema al cargar los juegos. Por favor, inténtalo de nuevo más tarde.";
+    }
+  } else {
+    return (
+      <>
+        <h1 className="text-4xl font-semibold text-center">
+          ¿Qué dice tu videojuego favorito de ti?
+        </h1>
+        <Form />
+      </>
+    );
+  }
 
   return (
     <>
@@ -31,7 +38,13 @@ export default function SearchPage() {
         ¿Qué dice tu videojuego favorito de ti?
       </h1>
       <Form />
-      <GameGrid games={games} />
+      {error ? (
+        <p className="text-center text-lg mt-8">{error}</p>
+      ) : (
+        <Suspense fallback={<p>Cargando resultados...</p>}>
+          <GameGrid games={games} />
+        </Suspense>
+      )}
     </>
   );
 }

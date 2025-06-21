@@ -30,7 +30,7 @@ export const Form = () => {
 
   useEffect(() => {
     if (q) {
-      console.log(q);
+      // console.log(q);
       setValue("gameName", q.toString());
     }
   }, [q, setValue]);
