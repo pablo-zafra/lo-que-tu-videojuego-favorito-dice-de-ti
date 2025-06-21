@@ -1,9 +1,8 @@
 "use client";
-
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import SearchIcon from "@mui/icons-material/Search";
+import { useEffect } from "react";
 
 interface SearchFormInputs {
   gameName: string;
@@ -11,15 +10,15 @@ interface SearchFormInputs {
 
 export const Form = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const q = searchParams.get("q");
+
   const {
     handleSubmit,
     register,
     formState: { errors },
+    setValue,
   } = useForm<SearchFormInputs>();
-
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
 
   const onSubmit = (data: SearchFormInputs) => {
     // Aquí es donde cambiamos la lógica
@@ -28,6 +27,13 @@ export const Form = () => {
       router.push(`/search?q=${encodeURIComponent(query)}`);
     }
   };
+
+  useEffect(() => {
+    if (q) {
+      console.log(q);
+      setValue("gameName", q.toString());
+    }
+  }, [q, setValue]);
 
   return (
     <div className="flex flex-col items-start gap-4">
