@@ -36,7 +36,7 @@ export const Form = () => {
   }, [q, setValue]);
 
   return (
-    <div className="flex flex-col items-start gap-4">
+    <div className="w-full flex flex-col items-start gap-4">
       <form className="relative w-full" onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
@@ -57,7 +57,7 @@ export const Form = () => {
           })}
         />
         <div className="absolute top-0 right-0 h-full flex justify-end p-1.5 w-2">
-          <button className="relative h-full aspect-square bg-turquesa hover:bg-turquesa-light text-white rounded-full cursor-pointer">
+          <button className="relative h-full aspect-square text-white bg-turquesa hover:bg-gray rounded-full cursor-pointer">
             <SearchIcon className="text-3xl!" />
           </button>
         </div>

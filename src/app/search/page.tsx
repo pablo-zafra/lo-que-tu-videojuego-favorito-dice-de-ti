@@ -13,18 +13,31 @@ export default async function SearchPage({
   let games: GameItemDataProcesed[] = [];
 
   if (query) {
-    games = await searchGames(query);
-  }
+    try {
+      games = await searchGames(query);
 
-  return (
-    <>
-      <h1 className="text-4xl font-semibold text-center">
-        ¿Qué dice tu videojuego favorito de ti?
-      </h1>
-      <Form />
-      <Suspense fallback={<p>Cargando resultados...</p>}>
-        <GameGrid games={games} />
-      </Suspense>
-    </>
-  );
+      return (
+        <>
+          <h1 className="text-4xl font-semibold text-center">
+            ¿Qué dice tu videojuego favorito de ti?
+          </h1>
+          <Form />
+          <Suspense fallback={<p>Cargando resultados...</p>}>
+            <GameGrid games={games} />
+          </Suspense>
+        </>
+      );
+    } catch (error) {
+      console.error("Error en la búsqueda de juegos:", error);
+      return (
+        <>
+          <h1 className="text-4xl font-semibold text-center">
+            Ha habido un error al buscar tu videojuego favorito.
+          </h1>
+          <p>Inténtalo de nuevo:</p>
+          <Form />
+        </>
+      );
+    }
+  }
 }

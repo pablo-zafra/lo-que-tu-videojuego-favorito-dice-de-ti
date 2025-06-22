@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ButtonLink } from "@/components/ButtonLink/ButtonLink";
 
 export const notFoundPage = () => {
   return (
@@ -7,15 +7,10 @@ export const notFoundPage = () => {
         404
       </h1>
       <div className="bg-turquesa px-2 text-sm rounded rotate-12 absolute">
-        Page Not Found
+        Page no encontrada
       </div>
       <button className="mt-8">
-        <Link
-          className="relative inline-block text-sm text-center font-medium bg-white hover:bg-gray-light text-gray-dark  rounded-full overflow-hidden p-4"
-          href="/"
-        >
-          Go Home
-        </Link>
+        <ButtonLink href="./" text="Volver" />
       </button>
     </main>
   );

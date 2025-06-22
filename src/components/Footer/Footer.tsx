@@ -8,7 +8,7 @@ export const Footer = () => {
         <Link
           href="https://pablozafra.dev"
           target="_blank"
-          className="text-turquesa"
+          className="text-turquesa hover:underline"
         >
           Pablo Zafra
         </Link>

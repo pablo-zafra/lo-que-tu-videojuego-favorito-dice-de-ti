@@ -2,6 +2,7 @@ import {
   GameItemData,
   GameItemDataProcesed,
 } from "@/interfaces/Games.interface";
+import placeHolderImg from "../../public/media/gameCoverPlaceholder.jpg";
 
 export const convertIgdbImageUrl = (url: string): string => {
   let newUrl = url.startsWith("https:") ? url : `https:${url}`;
@@ -20,20 +21,24 @@ export const filteredGames = (games: GameItemData[]) => {
   return gamesWithTotalRatingCount;
 };
 
+export const gameProcessed = (game: GameItemData): GameItemDataProcesed => {
+  const { id, cover, name, summary, total_rating_count } = game;
+
+  return {
+    id: id,
+    coverImg: cover ? convertIgdbImageUrl(cover.url) : placeHolderImg.src,
+    name: name,
+    summary: summary,
+    total_rating_count: total_rating_count,
+  };
+};
+
 export const gamesProcessed = (
   games: GameItemData[]
 ): GameItemDataProcesed[] => {
   const filtered = filteredGames(games);
   const processed: GameItemDataProcesed[] = filtered.map((game) => {
-    const { id, cover, name, summary, total_rating_count } = game;
-    const coverImg = convertIgdbImageUrl(cover.url);
-    return {
-      id: id,
-      coverImg: coverImg,
-      name: name,
-      summary: summary,
-      total_rating_count: total_rating_count,
-    };
+    return gameProcessed(game);
   });
   const sorted = processed.sort((a, b) => {
     // Necesario, porque el parámetro sort igdb funciona mal, devuelve siempre error
