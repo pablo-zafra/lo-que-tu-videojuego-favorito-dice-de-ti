@@ -1,12 +1,13 @@
 import { GameItemDataProcesed } from "@/interfaces/Games.interface";
-import { getTwitchAppAccessToken } from "./";
+import { getValidTwitchAccessToken } from ".";
 import { gamesProcessed } from "./igdbApiResultProcess";
 
 export const searchGames = async (
   query: string
 ): Promise<GameItemDataProcesed[]> => {
   try {
-    const accessToken = await getTwitchAppAccessToken();
+    const accessToken = await getValidTwitchAccessToken();
+
     const CLIENT_ID = process.env.TWITCH_CLIENT_ID;
 
     if (!accessToken || !CLIENT_ID) {
@@ -27,10 +28,9 @@ export const searchGames = async (
       method: "POST",
       headers: {
         "Client-ID": CLIENT_ID,
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${accessToken.accessToken}`,
         "Content-Type": "text/plain",
       },
-      // body: `fields name, summary, cover.url, genres.name, platforms.name, first_release_date; search "${query}"; limit 40;`,
       body: requestBody,
       next: { revalidate: 3600 },
     });

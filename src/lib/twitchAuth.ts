@@ -2,6 +2,7 @@
 //* ¡IMPORTANTE! Esta función solo debe llamarse desde el servidor.
 
 export async function getTwitchAppAccessToken() {
+  // console.log("getTwitchAppAccessToken()");
   const CLIENT_ID = process.env.TWITCH_CLIENT_ID;
   const CLIENT_SECRET = process.env.TWITCH_CLIENT_SECRET;
 
@@ -35,7 +36,7 @@ export async function getTwitchAppAccessToken() {
     }
 
     const data = await response.json();
-    return data.access_token;
+    return { accessToken: data.access_token, expiresIn: data.expires_in };
   } catch (error) {
     console.error("Fallo al obtener el token de acceso de Twitch:", error);
     throw error;
