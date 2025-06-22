@@ -57,9 +57,9 @@ export default function RootLayout({
       <body
         className={`relative ${inter.variable} bg-gray-dark-X font-Inter text-white antialiased grid-pattern`}
       >
-        <div className="flex flex-col items-center justify-center w-full min-h-screen py-5">
-          <div className="flex flex-col items-center justify-center w-full max-w-5xl gap-11 md:gap-21">
-            <main className="flex flex-col items-center w-full py-16 md:py-22 px-6 md:px-11 gap-11 md:gap-16">
+        <div className="relative flex flex-col items-center justify-center w-full min-h-screen py-5">
+          <div className="flex flex-col items-center justify-center w-full max-w-5xl min-h-[calc(100vh-4rem)] gap-11 md:gap-21">
+            <main className="flex-grow flex flex-col items-center justify-center w-full py-16 md:py-22 px-6 md:px-11 gap-11 md:gap-16">
               {children}
             </main>
             <Footer />
