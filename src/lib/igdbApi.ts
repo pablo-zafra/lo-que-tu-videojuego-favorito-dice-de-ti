@@ -1,7 +1,10 @@
-import { GameItemData } from "@/interfaces/Games.interface";
+import { GameItemDataProcesed } from "@/interfaces/Games.interface";
 import { getTwitchAppAccessToken } from "./";
+import { gamesProcessed } from "./igdbApiResultProcess";
 
-export const searchGames = async (query: string): Promise<GameItemData[]> => {
+export const searchGames = async (
+  query: string
+): Promise<GameItemDataProcesed[]> => {
   try {
     const accessToken = await getTwitchAppAccessToken();
     const CLIENT_ID = process.env.TWITCH_CLIENT_ID;
@@ -13,9 +16,10 @@ export const searchGames = async (query: string): Promise<GameItemData[]> => {
     }
 
     const requestBody = `
-      fields name, summary, cover.url, release_dates.date;
+      fields name, summary, cover.url, total_rating_count;
       search "${query}";
       where game_type = 0;
+      where version_parent = null;
       limit 40;
     `;
 
@@ -43,7 +47,9 @@ export const searchGames = async (query: string): Promise<GameItemData[]> => {
 
     const games = await igdbResponse.json();
 
-    return games;
+    const processedGames = gamesProcessed(games);
+
+    return processedGames;
   } catch (error) {
     console.error("Fallo en la búsqueda de juegos de IGDB:", error);
     throw error;

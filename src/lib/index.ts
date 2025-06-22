@@ -1,3 +1,3 @@
 export { searchGames } from "./igdbApi";
 export { getTwitchAppAccessToken } from "./twitchAuth";
-export { convertIgdbImageUrl } from "./igdbCoverUrlConverter";
+export { convertIgdbImageUrl } from "./igdbApiResultProcess";

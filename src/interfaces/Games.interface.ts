@@ -3,6 +3,15 @@ export interface GameItemData {
   cover: CoverData;
   name: string;
   summary: string;
+  total_rating_count: number;
+}
+
+export interface GameItemDataProcesed {
+  id: number;
+  coverImg: string;
+  name: string;
+  summary: string;
+  total_rating_count: number;
 }
 
 export interface CoverData {
