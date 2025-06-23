@@ -11,7 +11,8 @@ export const QuotePlaceholder: React.FC = () => {
       <div className="w-full h-6 bg-gray rounded-full animate-pulse"></div>
       <div className="w-3/5 h-6 bg-gray rounded-full animate-pulse"></div>
       <p className="w-full text-right text-xs font-light! align-baseline">
-        Generando con IA... <AutoAwesomeIcon className="align-bottom" />
+        La IA dice que esperes un momento...{" "}
+        <AutoAwesomeIcon className="align-bottom" />
       </p>
     </div>
   );

@@ -79,7 +79,7 @@ export default function GamePage() {
 
       {quoteLoading ? <QuotePlaceholder /> : <Quote quote={quote} />}
 
-      <ButtonLink href="/" text="Volver" />
+      <ButtonLink href="/" text="Buscar otro juego" />
     </>
   );
 }
