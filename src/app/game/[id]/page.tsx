@@ -1,5 +1,10 @@
 "use client";
-import { GameItem, GameItemPlaceholder, Quote } from "@/components";
+import {
+  GameItem,
+  GameItemPlaceholder,
+  Quote,
+  QuotePlaceholder,
+} from "@/components";
 import { ButtonLink } from "@/components/ButtonLink/ButtonLink";
 import { useGameSelectedContext } from "@/context";
 import { GameItemDataProcesed } from "@/interfaces/Games.interface";
@@ -12,9 +17,22 @@ export default function GamePage() {
   const { id } = params;
   const [gameLoadging, setGameLoading] = useState<boolean>(true);
   const [game, setGame] = useState<GameItemDataProcesed | null>(null);
-  const { gameSelectedData } = useGameSelectedContext();
+  const { gameSelectedData, setGameSelectedData } = useGameSelectedContext();
+  const [quoteLoading, setQuoteLoading] = useState<boolean>(true);
+  const [quote, setQuote] = useState<string>(
+    "Seguramente tienes una paciencia infinita y disfrutas de serhumillado repetidamente por un jefe."
+  );
 
-  const getGame = useCallback(async () => {
+  const setGameOnContext = useCallback(
+    (data: GameItemDataProcesed) => {
+      setGameSelectedData({
+        gameSelected: data,
+      });
+    },
+    [setGameSelectedData]
+  );
+
+  const fetchGame = useCallback(async () => {
     try {
       const response = await fetch(`/api/game/${id}`, {
         method: "GET",
@@ -29,12 +47,13 @@ export default function GamePage() {
       }
       const data = await response.json();
       setGame(data);
+      setGameOnContext(data);
       setGameLoading(false);
       // console.log(data);
     } catch (error) {
       console.log(error);
     }
-  }, [id, router]);
+  }, [id, router, setGameOnContext]);
 
   useEffect(() => {
     setGameLoading(true);
@@ -44,9 +63,9 @@ export default function GamePage() {
       setGameLoading(false);
       console.log("Game was selected: ", gameSelectedData);
     } else {
-      getGame();
+      fetchGame();
     }
-  }, [id, getGame, gameSelectedData]);
+  }, [id, fetchGame, gameSelectedData]);
 
   return (
     <>
@@ -58,11 +77,8 @@ export default function GamePage() {
         )}
       </div>
 
-      <Quote
-        quote="
-              Seguramente tienes una paciencia infinita y disfrutas de ser
-              humillado repetidamente por un jefe."
-      />
+      {quoteLoading ? <QuotePlaceholder /> : <Quote quote={quote} />}
+
       <ButtonLink href="/" text="Volver" />
     </>
   );
