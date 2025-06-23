@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components";
+import { GameSelectedProvider } from "@/context";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -60,7 +61,7 @@ export default function RootLayout({
         <div className="relative flex flex-col items-center justify-center w-full min-h-screen py-5">
           <div className="flex flex-col items-center justify-center w-full max-w-5xl min-h-[calc(100vh-4rem)] gap-11 md:gap-21">
             <main className="flex-grow flex flex-col items-center justify-center w-full py-16 md:py-22 px-6 md:px-11 gap-11 md:gap-16">
-              {children}
+              <GameSelectedProvider>{children}</GameSelectedProvider>
             </main>
             <Footer />
           </div>

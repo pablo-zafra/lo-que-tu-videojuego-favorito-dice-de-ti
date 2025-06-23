@@ -1,6 +1,7 @@
 "use client";
 import { GameItem, GameItemPlaceholder, Quote } from "@/components";
 import { ButtonLink } from "@/components/ButtonLink/ButtonLink";
+import { useGameSelectedContext } from "@/context";
 import { GameItemDataProcesed } from "@/interfaces/Games.interface";
 import { useParams, useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
@@ -11,6 +12,7 @@ export default function GamePage() {
   const { id } = params;
   const [gameLoadging, setGameLoading] = useState<boolean>(true);
   const [game, setGame] = useState<GameItemDataProcesed | null>(null);
+  const { gameSelectedData } = useGameSelectedContext();
 
   const getGame = useCallback(async () => {
     try {
@@ -32,13 +34,19 @@ export default function GamePage() {
     } catch (error) {
       console.log(error);
     }
-  }, [id]);
+  }, [id, router]);
 
   useEffect(() => {
     setGameLoading(true);
     setGame(null);
-    getGame();
-  }, [id, getGame]);
+    if (gameSelectedData.gameSelected) {
+      setGame(gameSelectedData.gameSelected);
+      setGameLoading(false);
+      console.log("Game was selected: ", gameSelectedData);
+    } else {
+      getGame();
+    }
+  }, [id, getGame, gameSelectedData]);
 
   return (
     <>

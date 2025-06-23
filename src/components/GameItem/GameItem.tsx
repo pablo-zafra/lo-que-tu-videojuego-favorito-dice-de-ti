@@ -3,12 +3,14 @@ import Image from "next/image";
 import type { GameItemDataProcesed } from "@/interfaces/Games.interface";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useGameSelectedContext } from "@/context";
 
 export const GameItem: React.FC<GameItemDataProcesed> = (
   GameItemDataProcesed
 ) => {
   const { id, name, coverImg } = GameItemDataProcesed;
   const pathname = usePathname();
+  const { setGameSelectedData } = useGameSelectedContext();
 
   const content = (
     <div className="flex flex-col items-start bg-gray-dark-XX rounded-2xl overflow-hidden cursor-pointer transition-transform hover:scale-103 hover:shadow-xl ">
@@ -31,5 +33,14 @@ export const GameItem: React.FC<GameItemDataProcesed> = (
     return content;
   }
 
-  return <Link href={`./game/${id}`}>{content}</Link>;
+  return (
+    <Link
+      href={`./game/${id}`}
+      onClick={() =>
+        setGameSelectedData({ gameSelected: GameItemDataProcesed })
+      }
+    >
+      {content}
+    </Link>
+  );
 };
