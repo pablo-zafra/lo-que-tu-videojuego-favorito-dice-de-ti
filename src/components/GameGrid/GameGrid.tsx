@@ -13,11 +13,17 @@ export const GameGrid: React.FC = () => {
 
   const getGames = useCallback(async () => {
     try {
-      const response = await fetch(`/api/search?query=${q}`);
+      const response = await fetch(`/api/search?query=${q}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-Key": process.env.NEXT_PUBLIC_API_KEY as string,
+        },
+      });
       const data = await response.json();
       setGames(data);
       setLoading(false);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log(error);
     }
