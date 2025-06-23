@@ -1,12 +1,13 @@
 import { GameItemDataProcesed } from "@/interfaces/Games.interface";
-import { getValidTwitchAccessToken } from ".";
+import { getTwitchAccessToken } from ".";
 import { gamesProcessed } from "./igdbApiResultProcess";
+import { renewTwitchAccessToken } from "./serverTokenCache";
 
 export const searchGames = async (
   query: string
 ): Promise<GameItemDataProcesed[]> => {
   try {
-    const accessToken = await getValidTwitchAccessToken();
+    const accessToken = await getTwitchAccessToken();
 
     const CLIENT_ID = process.env.TWITCH_CLIENT_ID;
 
@@ -37,6 +38,11 @@ export const searchGames = async (
 
     if (!igdbResponse.ok) {
       const errorData = await igdbResponse.json();
+      const { message } = errorData;
+      if (message.includes("Authorization Failure")) {
+        console.log("Error de autorización. Intentando renovar el token...");
+        renewTwitchAccessToken();
+      }
       console.error("Error al buscar en IGDB:", errorData);
       throw new Error(
         `Error al buscar juegos: ${igdbResponse.status} ${

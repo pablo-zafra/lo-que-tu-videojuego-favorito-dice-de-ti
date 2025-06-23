@@ -1,12 +1,12 @@
 import { GameItemDataProcesed } from "@/interfaces/Games.interface";
-import { getTwitchAppAccessToken } from ".";
+import { getTwitchAccessToken } from ".";
 import { gameProcessed } from "./igdbApiResultProcess";
 
 export const getGameById = async (
   id: string
 ): Promise<GameItemDataProcesed> => {
   try {
-    const accessToken = await getTwitchAppAccessToken();
+    const accessToken = await getTwitchAccessToken();
     const CLIENT_ID = process.env.TWITCH_CLIENT_ID;
 
     if (!accessToken || !CLIENT_ID) {
