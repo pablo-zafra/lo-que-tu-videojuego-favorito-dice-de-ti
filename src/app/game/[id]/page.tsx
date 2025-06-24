@@ -19,9 +19,8 @@ export default function GamePage() {
   const [game, setGame] = useState<GameItemDataProcesed | null>(null);
   const { gameSelectedData, setGameSelectedData } = useGameSelectedContext();
   const [quoteLoading, setQuoteLoading] = useState<boolean>(true);
-  const [quote, setQuote] = useState<string>(
-    "Seguramente tienes una paciencia infinita y disfrutas de serhumillado repetidamente por un jefe."
-  );
+  const [quote, setQuote] = useState<string | null>(null);
+  const [quoteError, setQuoteError] = useState<string | null>(null);
 
   const setGameOnContext = useCallback(
     (data: GameItemDataProcesed) => {
@@ -55,6 +54,39 @@ export default function GamePage() {
     }
   }, [id, router, setGameOnContext]);
 
+  const fetchQuote = useCallback(async () => {
+    if (!game) {
+      return;
+    }
+    const { name, summary } = game;
+
+    try {
+      const response = await fetch(`/api/quote`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-Key": process.env.NEXT_PUBLIC_API_KEY as string,
+        },
+        body: JSON.stringify({ name: name, summary: summary }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        console.log("Quote generated, response:", data);
+        const newQoute = data;
+        setQuote(newQoute ?? "Error al generar la frase con IA");
+        setQuoteLoading(false);
+        setQuoteError(null);
+      } else {
+        setQuoteError(`Error al generar la frase con IA: ${data.message}`);
+        setQuoteLoading(false);
+      }
+    } catch (error) {
+      setQuote("Error al generar la frase con IA");
+      setQuoteLoading(false);
+      console.log("Error en fetch game del API Route", error);
+    }
+  }, [game]);
+
   useEffect(() => {
     setGameLoading(true);
     setGame(null);
@@ -67,6 +99,17 @@ export default function GamePage() {
     }
   }, [id, fetchGame, gameSelectedData]);
 
+  useEffect(() => {
+    if (!game) {
+      return;
+    }
+    const { name, summary } = game;
+    if (name && summary) {
+      setQuoteLoading(true);
+      fetchQuote();
+    }
+  }, [fetchQuote, game]);
+
   return (
     <>
       <div className="w-full max-w-42">
@@ -77,7 +120,17 @@ export default function GamePage() {
         )}
       </div>
 
-      {quoteLoading ? <QuotePlaceholder /> : <Quote quote={quote} />}
+      {quoteLoading ? (
+        <QuotePlaceholder />
+      ) : (
+        <>
+          {typeof quote === "string" ? (
+            <Quote quote={quote} />
+          ) : (
+            <p>{quoteError}</p>
+          )}
+        </>
+      )}
 
       <ButtonLink href="/" text="Buscar otro juego" />
     </>

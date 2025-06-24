@@ -39,7 +39,7 @@ export const GameItem: React.FC<GameItemDataProcesed> = (
       onClick={() =>
         setGameSelectedData({ gameSelected: GameItemDataProcesed })
       }
-      className="cursor-pointer transition-transform hover:scale-103 hover:shadow-xl"
+      className="cursor-pointer transition-transform hover:scale-103"
     >
       {content}
     </Link>
