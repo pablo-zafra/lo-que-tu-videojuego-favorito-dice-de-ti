@@ -2,7 +2,7 @@ import {
   GameItemData,
   GameItemDataProcesed,
 } from "@/interfaces/Games.interface";
-import placeHolderImg from "../../public/media/gameCoverPlaceholder.jpg";
+import placeHolderImg from "@/../public/media/gameCoverPlaceholder.jpg";
 
 export const convertIgdbImageUrl = (url: string): string => {
   let newUrl = url.startsWith("https:") ? url : `https:${url}`;

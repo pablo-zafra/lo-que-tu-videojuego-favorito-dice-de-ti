@@ -1,5 +1,5 @@
 import { type NextRequest } from "next/server";
-import { getQuote } from "@/lib";
+import { fetchQuote } from "@/lib";
 
 export async function POST(request: NextRequest) {
   const expectedApiKey = process.env.NEXT_PUBLIC_API_KEY;
@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const response = await getQuote({ name, summary });
+    const response = await fetchQuote({ name, summary });
     console.log(
       "Quote generated with game name :",
       name,
