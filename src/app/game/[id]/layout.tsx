@@ -1,13 +1,12 @@
 import { Metadata, ResolvingMetadata } from "next";
 import { getGameById } from "@/lib";
 
-type Props = {
+type MetadataProps = {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata(
-  { params }: Props,
+  { params }: MetadataProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // read route params
