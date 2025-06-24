@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { Form } from "@/components";
-import { ButtonLink } from "@/components/ButtonLink/ButtonLink";
+// import { ButtonLink } from "@/components/ButtonLink/ButtonLink";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       >
         <Form />
       </Suspense>
-      <ButtonLink href="./" text="Juego random" />
+      {/* <ButtonLink href="./" text="Juego random" /> */}
     </>
   );
 }
