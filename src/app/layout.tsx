@@ -11,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Lo que tu videojuego favorito dice de ti",
+  title: "¿Qué dice tu videojuego favorito de ti?",
   description:
-    "Busca tu juego favorito y la IA te dirá qué piensa sobre tí. Desarrollado por Pablo Zafra.",
+    "Busca tu juego favorito y la IA te dirá qué piensa sobre ti. Desarrollado por Pablo Zafra.",
   icons: {
     icon: "media/favicon.png",
   },
@@ -21,20 +21,20 @@ export const metadata: Metadata = {
     google: "notranslate",
   },
   openGraph: {
-    title: "Lo que tu videojuego favorito dice de ti",
+    title: "¿Qué dice tu videojuego favorito de ti?",
     description:
       "Busca tu juego favorito y la IA te dirá qué piensa sobre tí. Desarrollado por Pablo Zafra.",
     url: "https://loquetuvideojuegofavoritodicedeti.pablozafra.dev/",
-    siteName: "Pablo Zafra Portafolio",
+    siteName: "Lo que tu videojuego favorito dice de ti",
     images: [
       {
-        url: "https://loquetuvideojuegofavoritodicedeti.pablozafra.dev/media/home.jpg",
+        url: "https://loquetuvideojuegofavoritodicedeti.pablozafra.dev/media/result.jpg",
         width: 1200,
         height: 630,
-        alt: "Pablo Zafra - Front-end developer, UI/UX designer, Motion Designer",
+        alt: "Lo que tu videojuego favorito dice de ti",
       },
     ],
-    locale: "en_EN",
+    locale: "es_ES",
     type: "website",
   },
   twitter: {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     description:
       "Busca tu juego favorito y la IA te dirá qué piensa sobre tí. Desarrollado por Pablo Zafra",
     images: [
-      "https://loquetuvideojuegofavoritodicedeti.pablozafra.dev/media/home.jpg",
+      "https://loquetuvideojuegofavoritodicedeti.pablozafra.dev/media/result.jpg",
     ],
   },
 };

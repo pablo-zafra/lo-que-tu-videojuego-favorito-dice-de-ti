@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Form } from "@/components";
+import { Form, ShareButton } from "@/components";
 // import { ButtonLink } from "@/components/ButtonLink/ButtonLink";
 
 export default function Home() {
@@ -16,6 +16,8 @@ export default function Home() {
         <Form />
       </Suspense>
       {/* <ButtonLink href="./" text="Juego random" /> */}
+
+      <ShareButton text="¿Qué dice tu videojuego favorito de ti?" />
     </>
   );
 }

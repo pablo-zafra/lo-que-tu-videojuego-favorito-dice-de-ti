@@ -9,6 +9,7 @@ import {
   Quote,
   QuotePlaceholder,
   ButtonLink,
+  ShareButton,
 } from "@/components";
 
 export default function GamePage() {
@@ -119,7 +120,6 @@ export default function GamePage() {
           <>{game && <GameItem {...game} />}</>
         )}
       </div>
-
       {quoteLoading ? (
         <QuotePlaceholder />
       ) : (
@@ -131,8 +131,12 @@ export default function GamePage() {
           )}
         </>
       )}
-
-      <ButtonLink href="/" text="Buscar otro juego" />
+      <div className="flex justify-center w-full gap-6">
+        <ButtonLink href="/" text="Buscar otro juego" />{" "}
+        <ShareButton
+          text={`Esto es lo que ${game?.name}, tu videojuego favorito, dice de ti`}
+        />
+      </div>
     </>
   );
 }
