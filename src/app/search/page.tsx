@@ -11,8 +11,8 @@ export default async function SearchPage() {
         fallback={<div className="w-full bg-gray h-20 animate-pulse"></div>}
       >
         <Form />
+        <GameGrid />
       </Suspense>
-      <GameGrid />
     </>
   );
 }
