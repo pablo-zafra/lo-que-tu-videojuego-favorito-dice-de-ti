@@ -1,15 +1,15 @@
 "use client";
+import React, { useCallback, useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { GameItemDataProcesed } from "@/interfaces/Games.interface";
+import { useGameSelectedContext } from "@/context";
 import {
   GameItem,
   GameItemPlaceholder,
   Quote,
   QuotePlaceholder,
+  ButtonLink,
 } from "@/components";
-import { ButtonLink } from "@/components/ButtonLink/ButtonLink";
-import { useGameSelectedContext } from "@/context";
-import { GameItemDataProcesed } from "@/interfaces/Games.interface";
-import { useParams, useRouter } from "next/navigation";
-import React, { useCallback, useEffect, useState } from "react";
 
 export default function GamePage() {
   const router = useRouter();
@@ -71,7 +71,7 @@ export default function GamePage() {
       });
       const data = await response.json();
       if (response.ok) {
-        console.log("Quote generated, response:", data);
+        // console.log("Quote generated, response:", data);
         const newQoute = data;
         setQuote(newQoute ?? "Error al generar la frase con IA");
         setQuoteLoading(false);
@@ -93,7 +93,7 @@ export default function GamePage() {
     if (gameSelectedData.gameSelected) {
       setGame(gameSelectedData.gameSelected);
       setGameLoading(false);
-      console.log("Game was selected: ", gameSelectedData);
+      // console.log("Game was selected: ", gameSelectedData);
     } else {
       fetchGame();
     }

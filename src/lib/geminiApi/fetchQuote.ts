@@ -9,7 +9,7 @@ const apiKey = process.env.GEMINI_API_KEY;
 
 const ai = new GoogleGenAI({ apiKey: apiKey });
 
-export const getQuote = async (request: QuoteRequestType) => {
+export const fetchQuote = async (request: QuoteRequestType) => {
   const { name, summary } = request;
 
   const response = await ai.models.generateContent({

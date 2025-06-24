@@ -1,7 +1,9 @@
 import { GameItemDataProcesed } from "@/interfaces/Games.interface";
-import { getTwitchAccessToken } from ".";
-import { gamesProcessed } from "./igdbApiResultProcess";
-import { renewTwitchAccessToken } from "./serverTokenCache";
+import {
+  getTwitchAccessToken,
+  renewTwitchAccessToken,
+  gamesProcessed,
+} from "@/lib";
 
 export const searchGames = async (
   query: string

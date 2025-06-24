@@ -8,7 +8,9 @@ export default async function SearchPage() {
         ¿Qué dice tu videojuego favorito de ti?
       </h1>
       <Suspense
-        fallback={<div className="w-full bg-gray h-20 animate-pulse"></div>}
+        fallback={
+          <div className="w-full bg-gray-light rounded-full h-16 animate-pulse"></div>
+        }
       >
         <Form />
         <GameGrid />

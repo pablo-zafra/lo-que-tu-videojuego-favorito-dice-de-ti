@@ -1,8 +1,8 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import SearchIcon from "@mui/icons-material/Search";
-import { useEffect } from "react";
 
 interface SearchFormInputs {
   gameName: string;

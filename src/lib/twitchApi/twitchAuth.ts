@@ -1,6 +1,3 @@
-// Función para obtener el token de acceso de aplicación de Twitch
-//* ¡IMPORTANTE! Esta función solo debe llamarse desde el servidor.
-
 export async function getTwitchAppAccessToken() {
   // console.log("getTwitchAppAccessToken()");
   const CLIENT_ID = process.env.TWITCH_CLIENT_ID;

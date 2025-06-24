@@ -1,6 +1,6 @@
 "use client";
-import { GameItemDataProcesed } from "@/interfaces/Games.interface";
 import { createContext, useState, useContext, ReactNode } from "react";
+import { GameItemDataProcesed } from "@/interfaces/Games.interface";
 
 interface gameSelectedData {
   gameSelected: GameItemDataProcesed | undefined;

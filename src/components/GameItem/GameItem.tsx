@@ -1,8 +1,8 @@
 "use client";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 import type { GameItemDataProcesed } from "@/interfaces/Games.interface";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useGameSelectedContext } from "@/context";
 
 export const GameItem: React.FC<GameItemDataProcesed> = (

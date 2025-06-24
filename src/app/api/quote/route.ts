@@ -1,5 +1,5 @@
-import { getQuote } from "@/lib";
 import { type NextRequest } from "next/server";
+import { getQuote } from "@/lib";
 
 export async function POST(request: NextRequest) {
   const expectedApiKey = process.env.NEXT_PUBLIC_API_KEY;

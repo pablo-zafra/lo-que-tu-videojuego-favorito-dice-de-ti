@@ -1,5 +1,4 @@
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
-import React from "react";
 
 interface QuoteProps {
   quote: string;

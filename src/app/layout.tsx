@@ -13,35 +13,39 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Lo que tu videojuego favorito dice de ti",
   description:
-    "Busca tu juego favorito y la IA te dirá qué piensa sobre tí. Desarrollado por Pablo Zafra",
-  // icons: {
-  //   icon: "media/favicon.png",
-  // },
+    "Busca tu juego favorito y la IA te dirá qué piensa sobre tí. Desarrollado por Pablo Zafra.",
+  icons: {
+    icon: "media/favicon.png",
+  },
   other: {
     google: "notranslate",
   },
-  // openGraph: {
-  //   title: "Pablo Zafra",
-  //   description: "Front-end developer, UI/UX designer, Motion Designer",
-  //   url: "https://pablozafra.dev",
-  //   siteName: "Pablo Zafra Portafolio",
-  //   images: [
-  //     {
-  //       url: "https://www.pablozafra.dev/media/og-main-img.jpg",
-  //       width: 1200,
-  //       height: 630,
-  //       alt: "Pablo Zafra - Front-end developer, UI/UX designer, Motion Designer",
-  //     },
-  //   ],
-  //   locale: "en_EN",
-  //   type: "website",
-  // },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "Pablo Zafra",
-  //   description: "Front-end developer, UI/UX designer, Motion Designer",
-  //   images: ["https://www.pablozafra.dev/media/og-main-img.jpg"],
-  // },
+  openGraph: {
+    title: "Lo que tu videojuego favorito dice de ti",
+    description:
+      "Busca tu juego favorito y la IA te dirá qué piensa sobre tí. Desarrollado por Pablo Zafra.",
+    url: "https://loquetuvideojuegofavoritodicedeti.pablozafra.dev/",
+    siteName: "Pablo Zafra Portafolio",
+    images: [
+      {
+        url: "https://loquetuvideojuegofavoritodicedeti.pablozafra.dev/media/home.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Pablo Zafra - Front-end developer, UI/UX designer, Motion Designer",
+      },
+    ],
+    locale: "en_EN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lo que tu videojuego favorito dice de ti",
+    description:
+      "Busca tu juego favorito y la IA te dirá qué piensa sobre tí. Desarrollado por Pablo Zafra",
+    images: [
+      "https://loquetuvideojuegofavoritodicedeti.pablozafra.dev/media/home.jpg",
+    ],
+  },
 };
 
 export default function RootLayout({

@@ -1,4 +1,4 @@
-import { getTwitchAppAccessToken } from "./twitchAuth";
+import { getTwitchAppAccessToken } from "@/lib";
 
 let cachedToken: { accessToken: string; expiresIn: number } | null = null;
 let tokenExpiry = 0;

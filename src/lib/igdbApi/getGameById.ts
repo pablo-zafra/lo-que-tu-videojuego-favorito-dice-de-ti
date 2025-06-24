@@ -1,6 +1,5 @@
 import { GameItemDataProcesed } from "@/interfaces/Games.interface";
-import { getTwitchAccessToken } from ".";
-import { gameProcessed } from "./igdbApiResultProcess";
+import { getTwitchAccessToken, gameProcessed } from "@/lib";
 
 export const getGameById = async (
   id: string
