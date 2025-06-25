@@ -10,6 +10,7 @@ import {
   QuotePlaceholder,
   ButtonLink,
   ShareButton,
+  RefreshButton,
 } from "@/components";
 
 export default function GamePage() {
@@ -144,10 +145,16 @@ export default function GamePage() {
         </>
       )}
       <div className="flex justify-center w-full gap-6">
-        <ButtonLink href="/" text="Buscar otro juego" />{" "}
-        <ShareButton
-          text={`Esto es lo que ${game?.name}, tu videojuego favorito, dice de ti`}
-        />
+        {quoteError ? (
+          <RefreshButton />
+        ) : (
+          <>
+            <ButtonLink href="/" text="Buscar otro juego" />
+            <ShareButton
+              text={`Esto es lo que ${game?.name}, tu videojuego favorito, dice de ti`}
+            />
+          </>
+        )}
       </div>
     </>
   );
