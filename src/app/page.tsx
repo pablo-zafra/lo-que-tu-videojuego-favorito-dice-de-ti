@@ -5,7 +5,7 @@ import { Form, ShareButton } from "@/components";
 export default function Home() {
   return (
     <>
-      <h1 className="text-4xl font-semibold text-center">
+      <h1 className="text-4xl font-semibold text-center animate-fade-in-up">
         ¿Qué dice tu videojuego favorito de ti?
       </h1>
       <Suspense

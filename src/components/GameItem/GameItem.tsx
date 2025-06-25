@@ -13,7 +13,7 @@ export const GameItem: React.FC<GameItemDataProcesed> = (
   const { setGameSelectedData } = useGameSelectedContext();
 
   const content = (
-    <div className="flex flex-col items-start bg-gray-dark-XX rounded-2xl overflow-hidden">
+    <div className="flex flex-col items-start bg-gray-dark-XX rounded-2xl overflow-hidden animate-fade-in-up">
       <div className="flex items-center justify-center w-full aspect-3/4 bg-gray overflow-hidden">
         {coverImg && (
           <Image

@@ -61,7 +61,7 @@ export const ShareButton: React.FC<ShareButtonProps> = ({ text }) => {
   return (
     <button
       onClick={handleShare}
-      className="w-fit rounded-full font-semibold text-white bg-turquesa hover:bg-gray cursor-pointer px-4 py-3"
+      className="w-fit rounded-full font-semibold text-white bg-turquesa hover:bg-gray cursor-pointer px-4 py-3 animate-fade-in-up"
     >
       Compartir <SendIcon />
     </button>

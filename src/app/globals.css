@@ -11,6 +11,19 @@
   --color-gray-dark-XX: #171717;
   --color-gray-light: #c7c7c7;
   --font-Inter: "Inter", sans-serif;
+
+  --animate-fade-in-up: fadeInUp 0.4s ease-out forwards;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      translate: 0 4em;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
 }
 
 html {
@@ -47,15 +60,6 @@ h6 {
       transparent 1px
     ),
     linear-gradient(to bottom, var(--color-gray-dark) 1px, transparent 1px);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 ::-webkit-scrollbar-track {

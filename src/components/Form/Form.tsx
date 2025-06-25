@@ -36,7 +36,7 @@ export const Form = () => {
   }, [q, setValue]);
 
   return (
-    <div className="w-full flex flex-col items-start gap-4">
+    <div className="w-full flex flex-col items-start gap-4 animate-fade-in-up">
       <form className="relative w-full" onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
