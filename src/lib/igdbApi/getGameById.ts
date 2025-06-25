@@ -51,5 +51,5 @@ export const getGameById = unstable_cache(
     }
   },
   ["id"],
-  { revalidate: 86400 }
+  { revalidate: 604800 }
 );

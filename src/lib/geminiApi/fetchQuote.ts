@@ -22,5 +22,5 @@ export const fetchQuote = unstable_cache(
     return response.text;
   },
   ["name", "summary"],
-  { revalidate: 86400 }
+  { revalidate: 604800 }
 );

@@ -78,8 +78,20 @@ export default function GamePage() {
         setQuoteLoading(false);
         setQuoteError(null);
       } else {
-        setQuoteError(`Error al generar la frase con IA: ${data.message}`);
         setQuoteLoading(false);
+        const errorCode = data.message?.error?.code;
+        if (errorCode === 503) {
+          setQuoteError(
+            `¡Vaya! La IA está sobrecargada ahora mismo. Inténtalo en unos minutos.`
+          );
+        } else {
+          setQuoteError(
+            `Error al generar la frase con IA: ${
+              data.message?.error?.message ??
+              "Inténtalo de nuevo en unos minutos."
+            }`
+          );
+        }
       }
     } catch (error) {
       setQuote("Error al generar la frase con IA");
