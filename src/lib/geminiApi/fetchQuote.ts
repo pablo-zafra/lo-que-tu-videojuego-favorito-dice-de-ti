@@ -21,6 +21,6 @@ export const fetchQuote = unstable_cache(
     console.log("Quote generated. Response: ", response);
     return response.text;
   },
-  ["name", "summary"],
+  ["game-quotes"],
   { revalidate: 604800 }
 );
