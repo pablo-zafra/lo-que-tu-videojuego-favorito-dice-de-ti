@@ -21,17 +21,21 @@ export async function generateMetadata(
   const { name, coverImg } = game;
 
   return {
-    title: `Lo que tu videojuego favorito, ${name}, dice de ti.`,
-    description: `Esto es lo que la IA piensa de ti, si tu juego favorito es ${name}.`,
+    title: `Mira lo que me ha dicho la IA por encantarme ${name}`,
+    description: `Esta página te dice lo que la IA piensa de ti, según tu videojuego favorito.`,
     openGraph: {
+      title: `Mira lo que me ha dicho la IA por encantarme ${name}`,
+      description: `Esta página te dice lo que la IA piensa de ti, según tu videojuego favorito.`,
+      images: [coverImg, ...previousImages],
       url: `https://loquetuvideojuegofavoritodicedeti.pablozafra.dev/game/${id}`,
       siteName: "Lo que tu videojuego favorito dice de ti",
-      images: [coverImg, ...previousImages],
+      type: "website",
+      locale: "es_ES",
     },
     twitter: {
       card: "summary_large_image",
-      title: `Lo que tu videojuego favorito, ${name}, dice de ti.`,
-      description: `Esto es lo que la IA piensa de ti, si tu juego favorito es ${name}.`,
+      title: `Mira lo que me ha dicho la IA por encantarme ${name}`,
+      description: `Esta página te dice lo que la IA piensa de ti, según tu videojuego favorito.`,
       images: [coverImg, ...previousImages],
     },
   };
