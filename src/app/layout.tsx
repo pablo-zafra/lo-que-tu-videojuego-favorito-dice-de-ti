@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Footer } from "@/components";
 import { GameSelectedProvider } from "@/context";
@@ -59,6 +60,7 @@ export default function RootLayout({
       translate="no"
       className="notranslate max-h-100 overflow-y-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-gray-dark-X [&::-webkit-scrollbar-thumb]:bg-gray [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:hover:bg-turquesa"
     >
+      <GoogleAnalytics gaId="G-8397WCHMZT" />
       <body
         className={`relative ${inter.variable} bg-gray-dark-X font-Inter text-white antialiased grid-pattern`}
       >
