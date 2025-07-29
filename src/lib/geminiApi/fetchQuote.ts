@@ -16,7 +16,7 @@ export const fetchQuote = unstable_cache(
 
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
-      contents: `Dado el videojuego ${name} con la siguiente descripción: ${summary}, genera una frase corta y divertida en español (máximo 25 palabras) que me describa teniendo en cuenta que es mi videojuego favorito. Puedes usar el conocimiento que ya tengas previamente sobre el videojuego. Ejemplo para el juego "Elden Ring": "Seguramente tienes una paciencia infinita y disfrutas de ser humillado repetidamente por un jefe.". Respóndeme solo con la frase en español, sin comillas.`,
+      contents: `Dado el videojuego ${name} con la siguiente descripción: ${summary}, genera una frase corta, sarcástica y humorística en español (máximo 25 palabras) que me describa teniendo en cuenta que es mi videojuego favorito. Puedes usar el conocimiento que ya tengas previamente sobre el videojuego. Ejemplo para el juego "Elden Ring": "Seguramente tienes una paciencia infinita y disfrutas de ser humillado repetidamente por un jefe.". Respóndeme solo con la frase en español, sin comillas.`,
     });
     console.log("Quote generated. Response: ", response);
     return response.text;
